@@ -66,6 +66,8 @@ Ruby is NOT installed on the host — everything runs in Docker (ruby:3.3 + post
 
 ### Git
 - Git: commit bằng identity cá nhân của maintainer (repo-local config).
+- KHÔNG thêm Claude vào attribution: không `Co-Authored-By: Claude`, không `Claude-Session:`,
+  không "Generated with Claude Code" trong commit/PR. Author duy nhất là maintainer.
 <!-- TODO: branch/commit convention, ngôn ngữ commit message, ngôn ngữ code comment & docs -->
 
 ## Zalo

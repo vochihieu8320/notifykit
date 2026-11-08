@@ -1,0 +1,52 @@
+# frozen_string_literal: true
+
+class CreateNotifyKitTables < ActiveRecord::Migration[<%= ActiveRecord::Migration.current_version %>]
+  def change
+    create_table :notify_kit_messages do |t|
+      t.string :namespace, null: false, default: "default"
+      t.string :idempotency_key
+      t.string :payload_fingerprint, null: false, limit: 64
+      t.string :provider, null: false
+      t.string :recipient, null: false
+      t.string :template
+      t.json :data
+      t.text :content
+      t.string :state, null: false, default: "queued"
+      t.integer :attempts_count, null: false, default: 0
+      t.datetime :available_at, null: false
+      t.string :locked_by
+      t.datetime :locked_until
+      t.string :provider_message_id
+      t.string :last_error_category
+      t.text :last_error_message
+      t.timestamps
+    end
+    # The idempotency guarantee lives here, not in Ruby. NULL keys never collide.
+    add_index :notify_kit_messages, %i[namespace idempotency_key], unique: true
+    add_index :notify_kit_messages, %i[state available_at]
+    add_index :notify_kit_messages, %i[state locked_until]
+
+    create_table :notify_kit_delivery_attempts do |t|
+      t.references :message, null: false, foreign_key: { to_table: :notify_kit_messages }, index: false
+      t.integer :number, null: false
+      t.string :provider, null: false
+      t.string :outcome
+      t.string :error_category
+      t.text :error_message
+      t.string :provider_message_id
+      t.datetime :started_at, null: false
+      t.datetime :finished_at
+      t.timestamps
+    end
+    add_index :notify_kit_delivery_attempts, %i[message_id number], unique: true
+
+    create_table :notify_kit_provider_tokens do |t|
+      t.string :key, null: false
+      t.text :access_token
+      t.text :refresh_token
+      t.datetime :expires_at
+      t.timestamps
+    end
+    add_index :notify_kit_provider_tokens, :key, unique: true
+  end
+end

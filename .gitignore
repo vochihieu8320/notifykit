@@ -15,3 +15,7 @@ zalo_token.json
 
 # claude code personal settings
 .claude/settings.local.json
+
+# dummy Rails app runtime files (local_secret.txt holds a generated secret_key_base)
+/spec/dummy/tmp/
+/spec/dummy/log/

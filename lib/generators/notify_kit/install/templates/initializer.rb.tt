@@ -1,0 +1,16 @@
+# frozen_string_literal: true
+
+NotifyKit.configure do |c|
+  # Durable mode: messages live in this app's database and commit with your transaction.
+  c.storage = NotifyKit::Storage::ActiveRecordStorage.new
+  # Fast path after commit. Correctness does not depend on it: also run
+  # `bin/rails notify_kit:work` (or schedule `NotifyKit.dispatch_due`) to pick up retries.
+  c.dispatcher = NotifyKit::Dispatchers::ActiveJobDispatcher.new
+
+  c.provider :zalo, :zalo_zns,
+             app_id: ENV.fetch("ZALO_APP_ID", nil),
+             app_secret: ENV.fetch("ZALO_APP_SECRET", nil),
+             token_store: NotifyKit::TokenStores::ActiveRecordStore.new
+
+  c.retry_policy = NotifyKit::RetryPolicy.new(max_attempts: 5)
+end

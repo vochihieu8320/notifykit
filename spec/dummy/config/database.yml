@@ -1,0 +1,4 @@
+test:
+  url: <%= ENV.fetch("DATABASE_URL", "postgres://notify_kit:notify_kit@localhost:5432/notify_kit_test") %>
+  pool: 30
+  checkout_timeout: 30

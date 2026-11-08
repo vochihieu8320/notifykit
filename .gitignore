@@ -19,3 +19,8 @@ zalo_token.json
 # dummy Rails app runtime files (local_secret.txt holds a generated secret_key_base)
 /spec/dummy/tmp/
 /spec/dummy/log/
+
+# rails credentials / keys
+/config/master.key
+/config/credentials/*.key
+*.key

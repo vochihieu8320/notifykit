@@ -1,6 +1,23 @@
 # NotifyKit
 
 Ruby gem gửi thông báo (Zalo trước, sau đó SMS/Email) cho developer Việt Nam.
+Repo: https://github.com/vochihieu8320/notifykit — **PUBLIC**.
+
+## ⚠️ Bảo mật — repo PUBLIC (bắt buộc, không ngoại lệ)
+Mọi thứ được commit đều công khai vĩnh viễn (kể cả khi xoá ở commit sau — vẫn còn trong lịch sử).
+- KHÔNG BAO GIỜ commit/push bất kỳ key/secret nào: Zalo App Secret, access/refresh token, API key
+  (SES, SMS gateway...), mật khẩu, `secret_key_base`, private key, file `.env`, `zalo_token.json`,
+  `spec/dummy/tmp/` (chứa `local_secret.txt`), `config/master.key`, `*.pem`.
+- Secrets chỉ đọc từ ENV (`ENV.fetch("ZALO_APP_SECRET", nil)`); trong spec dùng giá trị giả
+  (`"app-secret"`, `"access-1"`) và mock server — không bao giờ dùng credential thật.
+- Không ghi thông tin cá nhân/nội bộ vào repo: đường dẫn máy cá nhân, OA ID thật, số điện thoại thật,
+  ghi chú riêng tư.
+- TRƯỚC MỖI COMMIT: chạy `git diff --cached` và quét secret, ví dụ
+  `git diff --cached | grep -niE 'secret|token|api[_-]?key|password|BEGIN .*PRIVATE KEY'`
+  rồi đọc từng kết quả. Có nghi ngờ → dừng lại và hỏi maintainer.
+- Nếu lỡ commit secret: KHÔNG push. Nếu đã push: coi secret đó là đã lộ → thu hồi/đổi ngay ở nhà cung cấp
+  (Zalo developers, AWS...), sau đó mới xử lý lịch sử git.
+- Không tự push khi maintainer chưa yêu cầu.
 
 ## Naming (đã chốt)
 - Brand: NotifyKit · gem: `notify_kit` · module: `NotifyKit` · OA Zalo: NotifyKit.

@@ -14,7 +14,7 @@ Gem::Specification.new do |spec|
     application's own infrastructure: dedup via idempotency keys, safe retry with an explicit
     error taxonomy, and a transactional outbox when used with ActiveRecord.
   DESC
-  spec.homepage = "https://github.com/vochihieu8320/notify_kit"
+  spec.homepage = "https://github.com/vochihieu8320/notifykit"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.2"
 

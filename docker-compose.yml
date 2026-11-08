@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: notify_kit
+      POSTGRES_PASSWORD: notify_kit
+      POSTGRES_DB: notify_kit_test
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U notify_kit"]
+      interval: 2s
+      retries: 20
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/app
+      - bundle:/bundle
+    environment:
+      DATABASE_URL: postgres://notify_kit:notify_kit@db:5432/notify_kit_test
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  bundle:

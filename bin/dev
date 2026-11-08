@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# Run any command inside the dev container, e.g.:
+#   bin/dev bundle exec rspec
+#   bin/dev bundle exec rubocop
+set -euo pipefail
+cd "$(dirname "$0")/.."
+exec docker compose run --rm app "$@"

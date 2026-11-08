@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1024" y2="1024">
+      <stop offset="0" stop-color="#3B5BFD"/>
+      <stop offset="1" stop-color="#11B5A4"/>
+    </linearGradient>
+  </defs>
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+  <!-- ringing waves -->
+  <path d="M305 365 Q262 445 305 525" fill="none" stroke="#fff" stroke-width="24" stroke-linecap="round" opacity=".65"/>
+  <path d="M245 325 Q180 445 245 565" fill="none" stroke="#fff" stroke-width="24" stroke-linecap="round" opacity=".35"/>
+  <!-- bell -->
+  <circle cx="512" cy="262" r="30" fill="#fff"/>
+  <path d="M512 282 C408 282 352 362 352 462 L352 582 L302 652 L722 652 L672 582 L672 462 C672 362 616 282 512 282 Z" fill="#fff"/>
+  <path d="M452 682 a60 60 0 0 0 120 0 Z" fill="#fff"/>
+  <!-- delivered badge -->
+  <circle cx="690" cy="330" r="100" fill="#FF8A3D" stroke="url(#bg)" stroke-width="22"/>
+  <polyline points="642,332 677,367 740,302" fill="none" stroke="#fff" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

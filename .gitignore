@@ -1,0 +1,17 @@
+# secrets — never commit
+.env
+.env.*
+zalo_token.json
+*.pem
+
+# ruby
+/.bundle/
+/vendor/bundle
+/pkg/
+/tmp/
+/coverage/
+*.gem
+.rspec_status
+
+# claude code personal settings
+.claude/settings.local.json
